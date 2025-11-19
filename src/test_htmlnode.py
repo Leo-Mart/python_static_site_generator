@@ -7,7 +7,7 @@ class TestHTMLNode(unittest.TestCase):
     node = HTMLNode("img", None, None, {"src": "url/to/image"})
 
     self.assertEqual(
-      " src='url/to/image'", node.props_to_html()
+      ' src="url/to/image"', node.props_to_html()
     )
 
   def test_repr(self):
@@ -27,7 +27,7 @@ class TestHTMLNode(unittest.TestCase):
     node = HTMLNode("a", None, None, {"href": "https://www.test.com", "target": "_blank"})
 
     self.assertEqual(
-      " href='https://www.test.com' target='_blank'", node.props_to_html()
+      ' href="https://www.test.com" target="_blank"', node.props_to_html()
     )
 
   def test_no_prop(self):
