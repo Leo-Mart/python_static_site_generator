@@ -1,6 +1,6 @@
 import unittest
 
-from convert_markdown import split_nodes_delimiter, split_nodes_image, split_nodes_link, extract_markdown_images, extract_markdown_links, text_to_textnodes
+from convert_markdown_inline import split_nodes_delimiter, split_nodes_image, split_nodes_link, extract_markdown_images, extract_markdown_links, text_to_textnodes
 from textnode import TextNode, TextType
 
 class TestSplitNodes(unittest.TestCase):
