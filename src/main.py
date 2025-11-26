@@ -1,7 +1,7 @@
 from textnode import TextNode, TextType
+from file_operations import copy_static_files_to_public
 
 def main():
-  textNode = TextNode("this is some text", TextType.LINK, "https://www.google.se")
-  print(textNode)
+  copy_static_files_to_public("./static", "./public")
 
 main()
