@@ -12,10 +12,8 @@ class BlockType(Enum):
 def block_to_block_type(markdown_block):
   lines = markdown_block.split("\n")
 
-  if markdown_block.startswith("#"):
-    count = markdown_block.count("#")
-    if count >= 1 and count <= 6:
-      return BlockType.HEADING
+  if markdown_block.startswith(("#", "##", "###", "####", "#####", "######")):
+    return BlockType.HEADING
   elif markdown_block.startswith("```") and markdown_block.endswith("```"):
     return BlockType.CODE
   elif markdown_block.startswith(">"):
