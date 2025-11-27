@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 from markdown_to_html import markdown_to_html_node
 
 
@@ -27,7 +28,6 @@ def generate_page(from_path, template_path, dest_path):
   if not os.path.exists(from_path):
       raise FileNotFoundError("Error: cannot find source file")
 
-
   with open(from_path, "r") as file:
     markdown_string = file.read()
 
@@ -43,15 +43,27 @@ def generate_page(from_path, template_path, dest_path):
   template = template.replace("{{ Title }}", title)
   template = template.replace("{{ Content }}", html_string)
 
-
-
   dir_path = os.path.dirname(dest_path)
   if not os.path.exists(dir_path):
-    os.makedirs(dir_path)
-  
+    os.makedirs(dir_path)  
 
   with open(dest_path, "w") as file:
     print(f"Writing to index.html file in {dest_path}...")
     file.write(template)
     print("Write successfull")
 
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+  if not os.path.isdir(dir_path_content):
+    raise Exception("Error: content folder not found or invalid")
+  for filename in os.listdir(dir_path_content):
+    file_path_src = os.path.join(dir_path_content, filename)
+    file_path_dest = os.path.join(dest_dir_path, filename)
+    if os.path.isdir(file_path_src):
+      os.makedirs(file_path_dest, exist_ok=True)
+      generate_pages_recursive(file_path_src, template_path, file_path_dest)
+    elif os.path.isfile(file_path_src) and Path(file_path_src).suffix == ".md":
+      os.makedirs(dest_dir_path, exist_ok=True)
+      dest_html_path = Path(file_path_dest).with_suffix(".html")
+      generate_page(file_path_src, template_path, str(dest_html_path))
+
+      
