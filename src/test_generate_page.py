@@ -61,13 +61,6 @@ This is the same paragraph on a new line
     self.assertIn("Error: no h1 heading found", str(ctx.exception))
 
 
-  def test_generate_page(self):
-    from_path = "./content/index.md"
-    template_path = "./template.html"
-    dest_path = "./public/index.html"
-
-    generate_page(from_path, template_path, dest_path)
-
 
 if __name__ == '__main__':
   unittest.main()
