@@ -53,7 +53,7 @@ def generate_page(from_path, template_path, dest_path, basepath):
   with open(dest_path, "w") as file:
     print(f"Writing to index.html file in {dest_path}...")
     file.write(template)
-    print("Write successfull")
+    print("Write successful")
 
 def generate_pages_recursive(dir_path_content, template_path, dest_dir_path, basepath):
   if not os.path.isdir(dir_path_content):

@@ -3,7 +3,7 @@ import shutil
 
 def copy_static_files_to_public(source, destination):
   # FIrst delete files from the /public directory to ensure that the copy is clean
-  print("Deleting public direcory...")
+  print("Deleting public directory...")
   if os.path.exists(destination):
     shutil.rmtree(destination)
 
